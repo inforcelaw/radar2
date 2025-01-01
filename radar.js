@@ -36,11 +36,10 @@ const config = {
 
     ignoredPaths: [
       'proxy.log.0',
-      'node_modules/@types/node',
       'proxy.log',
       'plugins/.paper-remapped',
       'plugins/CoreProtect/database.db',
-      'plugins/PlaceholderAPI/javascripts/example.js',
+      'node_modules/@types/node/',
       'plugins/Geyser-Spigot/locales',
       'plugins/Geyser-Velocity/locales',
       'plugins/Essentials',
