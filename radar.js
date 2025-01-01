@@ -29,11 +29,14 @@ const config = {
       'forbidden-players.txt',
       'help.yml',
       'commands.yml',
-      'permissions.yml'
+      'permissions.yml',
+      'index.js',
+      'config.json'
     ],
 
     ignoredPaths: [
       'proxy.log.0',
+      'node_modules/@types/node',
       'proxy.log',
       'plugins/.paper-remapped',
       'plugins/CoreProtect/database.db',
@@ -48,8 +51,7 @@ const config = {
       'world/playerdata',
       'world/stats',
       'world/advancements',
-      'world/region',
-      'node_modules/@types/node'
+      'world/region'
     ],
     maxJarSize: 5 * 1024 * 1024,
     suspiciousCache: ['cpuminer', 'cpuminer-avx2', 'xmrig'],
