@@ -48,7 +48,7 @@ const config = {
       'world/playerdata',
       'world/stats',
       'world/advancements',
-      'world/region'
+      'world/region',
       'node_modules/@types/node'
     ],
     maxJarSize: 5 * 1024 * 1024,
