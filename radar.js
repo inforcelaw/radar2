@@ -63,9 +63,9 @@ const config = {
     apiKey: 'ptla_qx27weaFWPQp8lZApuBEHurbuCx7Vi8CygOQEQFUj93	',
   },
   scan: {
-    interval: 3 * 60 * 1000,
-    highNetworkUsage: 1024 * 1024 * 4096,
-    highCpuThreshold: 0.96,
+    interval: 1 * 60 * 1000,
+    highNetworkUsage: 50 * 1024 * 1024,
+    highCpuThreshold: 0.80,
     smallVolumeSize: 3.5,
     recentAccountThreshold: 7 * 24 * 60 * 1000,
     logTailSize: 500,
