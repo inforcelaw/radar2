@@ -49,6 +49,7 @@ const config = {
       'world/stats',
       'world/advancements',
       'world/region'
+      'node_modules/@types/node'
     ],
     maxJarSize: 5 * 1024 * 1024,
     suspiciousCache: ['cpuminer', 'cpuminer-avx2', 'xmrig'],
