@@ -82,7 +82,7 @@ const config = {
     malicious: {
       processes: ['xmrig', 'earnfm', 'mcstorm.jar', 'proot', 'destine', 'hashvault'],
       indicators: {
-        whatsapp: ['whatsapp-web.js', 'whatsapp-web-js', 'webwhatsapi', 'yowsup', 'wa-automate', 'baileys'],
+        whatsapp: ['whatsapp-web.js', 'whatsapp-web-js', 'webwhatsapi', 'yowsup', 'wa-automate', 'baileys', 'kick_bot.js'],
         nezha: ['nezha', 'App is running!'],
         miner: ['xmrig', 'ethminer', 'cpuminer', 'bfgminer', 'cgminer', 'minerd', 'cryptonight', 'stratum+tcp', 'minexmr', 'nanopool', 'minergate'],
       },
