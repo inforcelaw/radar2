@@ -40,7 +40,7 @@ const config = {
       'plugins/.paper-remapped',
       'plugins/CoreProtect/database.db',
       'node_modules/@types/node/',
-      'plugins/Geyser-Spigot/locales',
+      'node_modules/proxy-from-env/',
       'plugins/Geyser-Velocity/locales',
       'plugins/Essentials',
       'plugins/ViaVersion/cache',
