@@ -61,7 +61,7 @@ const config = {
     url: 'https://discord.com/api/webhooks/1250020142365016107/MDuhoMbZkfVxm2miD-WP9oUyCpefyRlDb2ahfkD0I7Lj8i8b1QXCHU-zuuqAPyH5sk5j',
   },
   pterodactyl: {
-    apiUrl: 'https://panel.divahost.net',
+    apiUrl: 'https://panel.divahost.net/api/application',
     apiKey: 'ptla_qx27weaFWPQp8lZApuBEHurbuCx7Vi8CygOQEQFUj93	',
   },
   scan: {
