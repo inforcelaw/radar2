@@ -62,7 +62,7 @@ const config = {
   },
   pterodactyl: {
     apiUrl: 'https://panel.divahost.net/api/application',
-    apiKey: 'ptla_qx27weaFWPQp8lZApuBEHurbuCx7Vi8CygOQEQFUj93	',
+    apiKey: 'ptla_lRDzXwZdTGMBp9lHdeCA4lE5iD1Wf469dYhOBvmhP70',
   },
   scan: {
     interval: 1 * 60 * 1000,
