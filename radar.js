@@ -15,47 +15,59 @@ const config = {
     dir: '/var/lib/pterodactyl/volumes',
     ignoredExtensions: [
       '.jar', '.phar', '.rar', '.zip', '.tar.gz', '.7z', '.gz', '.xz', '.bz2',
-      '.log', '.logs', '.txt', '.yml', '.yaml', '.json', '.properties', '.db', '.toml', '.mca'
+      '.log', '.logs', '.txt', '.yml', '.yaml', '.json', '.properties', '.db', '.toml', '.mca',
+      '.sqlite', '.sqlite3', '.env'
     ],
     ignoredFiles: [
-      'velocity.toml', 
-      'server.jar.old',
-      'latest.log',
-      'debug.log',
-      'error.log',
-      'access.log',
-      'server.log',
-      'usermap.bin',
-      'forbidden-players.txt',
-      'help.yml',
+      'config.json',
+      'package.json',
+      'package-lock.json',
+      'npm-debug.log',
+      'yarn.lock',
+      'config.yml',
+      'config.yaml',
+      '.env.example',
+      'database.sqlite',
       'commands.yml',
-      'permissions.yml',
-      'index.js',
-      'config.json'
+      'permissions.yml'
     ],
-
     ignoredPaths: [
-      'proxy.log.0',
-      'proxy.log',
+      'node_modules',
+      '.git',
+      'logs',
+      'cache',
+      'temp',
+      '.npm',
       'plugins/.paper-remapped',
       'plugins/CoreProtect/database.db',
-      'node_modules/@types/node/',
-      'node_modules/proxy-from-env/',
-      'plugins/Geyser-Velocity/locales',
-      'plugins/Essentials',
-      'plugins/ViaVersion/cache',
-      'cache',
-      'logs',
-      'crash-reports',
-      'world/playerdata',
-      'world/stats',
-      'world/advancements',
-      'world/region'
+      'plugins/PlaceholderAPI/javascripts/example.js'
     ],
-    maxJarSize: 5 * 1024 * 1024,
-    suspiciousCache: ['cpuminer', 'cpuminer-avx2', 'xmrig'],
-    suspiciousNames: ['mine.sh', 'working_proxies.txt', 'proxies.txt', 'whatsapp.js', 'wa_bot.js', 'proxy.txt'],
-    suspiciousExts: ['.sh']
+    maxFileSize: 5 * 1024 * 1024,
+    suspiciousCache: [
+      'discord-spam',
+      'mass-dm',
+      'raid-tool',
+      'token-generator',
+      'cpuminer',
+      'cpuminer-avx2',
+      'xmrig'
+    ],
+    suspiciousNames: [
+      'raid.js',
+      'spam.js',
+      'massdm.js',
+      'nuke.js',
+      'crash.js',
+      'token.txt',
+      'tokens.txt',
+      'proxies.txt',
+      'mine.sh',
+      'working_proxies.txt',
+      'whatsapp.js',
+      'wa_bot.js',
+      'proxy.txt'
+    ],
+    suspiciousExts: ['.sh', '.exe', '.dll', '.bin']
   },
   webhook: {
     url: 'https://discord.com/api/webhooks/1250020142365016107/MDuhoMbZkfVxm2miD-WP9oUyCpefyRlDb2ahfkD0I7Lj8i8b1QXCHU-zuuqAPyH5sk5j',
@@ -65,28 +77,83 @@ const config = {
     apiKey: 'ptla_lRDzXwZdTGMBp9lHdeCA4lE5iD1Wf469dYhOBvmhP70',
   },
   scan: {
-    interval: 1 * 60 * 1000,
-    highNetworkUsage: 50 * 1024 * 1024,
-    highCpuThreshold: 0.80,
-    smallVolumeSize: 3.5,
+    interval: 3 * 60 * 1000,
+    highNetworkUsage: 1024 * 1024 * 1024, // 1GB for Discord bots
+    highCpuThreshold: 0.90,
+    smallVolumeSize: 2, // MB
     recentAccountThreshold: 7 * 24 * 60 * 1000,
     logTailSize: 500,
-    hashSyncInterval: 3 * 60 * 1000, // 5 minutes
+    hashSyncInterval: 3 * 60 * 1000,
     hashCacheSize: 10000,
-    serverCacheSize: 1000
+    serverCacheSize: 1000,
+    maxConnections: 2500, // Maximum Discord connections
+    maxMessagesPerMinute: 120 // Discord API rate limit
   },
   hashApi: {
-    url: 'http://s4h-ngt-a-01.synthoptic.io:25000' // Optional
+    url: 'http://s4h-ngt-a-01.synthoptic.io:25000'
   },
   patterns: {
     malicious: {
-      processes: ['xmrig', 'earnfm', 'mcstorm.jar', 'proot', 'destine', 'hashvault'],
+      processes: [
+        'xmrig',
+        'earnfm',
+        'mcstorm.jar',
+        'proot',
+        'destine',
+        'hashvault',
+        'python3',
+        'bash',
+        'nc',
+        'curl',
+        'wget',
+        'pm2'
+      ],
       indicators: {
-        whatsapp: ['whatsapp-web.js', 'whatsapp-web-js', 'webwhatsapi', 'yowsup', 'wa-automate', 'baileys', 'kick_bot.js'],
-        nezha: ['nezha', 'App is running!'],
-        miner: ['xmrig', 'ethminer', 'cpuminer', 'bfgminer', 'cgminer', 'minerd', 'cryptonight', 'stratum+tcp', 'minexmr', 'nanopool', 'minergate'],
+        spam: [
+          'mass dm',
+          'massdm',
+          'spam bot',
+          'raid tool',
+          'nuker',
+          'selfbot',
+          'token grab',
+          'token log'
+        ],
+        crypto: [
+          'wallet',
+          'bitcoin',
+          'ethereum',
+          'crypto',
+          'mining pool',
+          'miner',
+          'xmrig',
+          'ethminer',
+          'cpuminer',
+          'minerd',
+          'cryptonight',
+          'stratum+tcp',
+          'minexmr',
+          'nanopool',
+          'minergate'
+        ],
+        abuse: [
+          'discord.js-selfbot',
+          'discord-selfbot',
+          'raid-toolkit',
+          'discord-nuker',
+          'token-grabber'
+        ],
+        whatsapp: [
+          'whatsapp-web.js',
+          'whatsapp-web-js',
+          'webwhatsapi',
+          'yowsup',
+          'wa-automate',
+          'baileys'
+        ],
+        nezha: ['nezha', 'App is running!']
       },
-      ports: [1080, 3128, 8080, 8118, 9150, 9001, 9030],
+      ports: [1080, 3128, 8080, 8118, 9150, 9001, 9030, 6379, 8000], // Common proxy/tunnel ports
       words: [
         "new job from",
         "noVNC",
@@ -94,6 +161,14 @@ const config = {
         "FAILED TO APPLY MSR MOD",
         "Tor server's identity key",
         "Stratum - Connected",
+        "Mass DM started",
+        "Raid started",
+        "Tokens loaded",
+        "proxies loaded",
+        "selfbot ready",
+        "grabbing tokens",
+        "sending to webhook",
+        "spam started",
         "eth.2miners.com:2020",
         "whatsapp",
         "wa-automate",
@@ -113,11 +188,26 @@ const config = {
         'xmrig',
         'nanopool.org',
         'ethpool.org',
-        '2miners.com'
+        '2miners.com',
+        'client.on("ready")',
+        'discord.js-selfbot',
+        'new Discord.Client({ws: {intents: 32767}})',
+        'client.users.forEach',
+        'message.guild.members.forEach',
+        'token-grabber',
+        'Buffer.from',
+        'localStorage.getItem("token")',
+        'new WebSocket("wss://discord.gg")'
       ]
     },
     legitimate: {
-      logPatterns: [
+      patterns: [
+        'Bot is ready!',
+        'Connected to Discord',
+        'Logged in as',
+        'Successfully registered commands',
+        'Shard ready',
+        'Bot initialized',
         'Done (',
         'Starting minecraft server version',
         'Preparing spawn area',
@@ -127,6 +217,12 @@ const config = {
         'Preparing start region',
         'Time elapsed',
         'Startup script'
+      ],
+      dependencies: [
+        'discord.js',
+        '@discordjs/builders',
+        '@discordjs/rest',
+        'discord-api-types'
       ]
     }
   }
@@ -186,7 +282,6 @@ class HashDatabase {
   }
 
   async isServerFlagged(serverId) {
-    // Check cache first
     const cached = this.serverCache.get(serverId);
     if (cached) return cached;
 
@@ -361,8 +456,8 @@ class RadarAPI {
       }
     });
 
-    this.app.listen(50103, () => {
-      console.log('Radar API listening on port 50103');
+    this.app.listen(3000, () => {
+      console.log('Radar API listening on port 3000');
     });
   }
 
@@ -862,4 +957,4 @@ class RadarAPI {
 const radar = new RadarAPI();
 radar.start().catch(console.error);
 
-export default RadarAPI;
+export default RadarAPI; 
